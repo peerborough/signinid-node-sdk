@@ -1,0 +1,20 @@
+{
+  "name": "signinid-examples",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "inbox:latest": "node dist/inbox-latest.js",
+    "inbox:wait": "node dist/inbox-wait.js",
+    "inbox:list": "node dist/inbox-list.js",
+    "sent:latest": "node dist/sent-latest.js",
+    "error": "node dist/error-handling.js"
+  },
+  "dependencies": {
+    "signinid": "file:../.."
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -13,7 +13,7 @@ import { SentResource } from "./resources/sent";
 /**
  * Default API base URL
  */
-const DEFAULT_BASE_URL = "https://app.signinid.com";
+const DEFAULT_BASE_URL = "https://api.signinid.com";
 
 /**
  * SigninID API client
@@ -58,7 +58,7 @@ export class SigninID {
     }
 
     this.secretKey = resolvedSecretKey;
-    this.baseUrl = options?.baseUrl ?? DEFAULT_BASE_URL;
+    this.baseUrl = options?.baseUrl ?? process.env.SIGNINID_BASE_URL ?? DEFAULT_BASE_URL;
     this.timeout = options?.timeout ?? 30000;
 
     this.inbox = new InboxResource(this);

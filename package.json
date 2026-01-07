@@ -27,7 +27,12 @@
     "testing",
     "otp",
     "sandbox",
-    "smtp"
+    "smtp",
+    "signup",
+    "login",
+    "e2e",
+    "automation",
+    "verification"
   ],
   "author": "",
   "license": "MIT",

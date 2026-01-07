@@ -1,6 +1,6 @@
 {
   "name": "signinid",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Node.js SDK for SigninID sandbox email testing API",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

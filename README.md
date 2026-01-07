@@ -13,19 +13,15 @@ npm install signinid
 ```typescript
 import { SigninID } from 'signinid';
 
-// Create client (reads SIGNINID_SECRET_KEY from environment)
+// Set SIGNINID_SECRET_KEY environment variable
 const client = new SigninID();
 
-// Or pass the key directly
-const client = new SigninID({ secretKey: 'sk_live_...' });
+// Wait for a new verification email to arrive
+const email = await client.inbox.waitForNew({ to: 'user@test.com' });
 
-// Get the latest inbox email
-const email = await client.inbox.latest();
-
+// Extract the OTP
 if (email) {
-  console.log('From:', email.from_address);
-  console.log('Subject:', email.subject);
-  console.log('OTP:', email.detected_otp);
+  console.log('Verification code:', email.detected_otp);
 }
 ```
 
@@ -55,6 +51,21 @@ const client = new SigninID(options?: SigninIDOptions);
 
 ### Inbox Methods
 
+#### `inbox.waitForNew(params?)`
+
+Wait for a new email to arrive. Polls until a new email arrives or timeout is reached.
+
+```typescript
+const email = await client.inbox.waitForNew({
+  to: 'user@test.com',
+  timeout: 30000  // 30 seconds (default)
+});
+
+if (email) {
+  console.log('OTP:', email.detected_otp);
+}
+```
+
 #### `inbox.latest(params?)`
 
 Get the most recent inbox email.
@@ -67,21 +78,6 @@ const email = await client.inbox.latest({
   to: 'user@test.com',
   after: new Date('2024-01-01')
 });
-```
-
-#### `inbox.waitForNew(params?)`
-
-Poll for a new email. Useful for E2E testing.
-
-```typescript
-const email = await client.inbox.waitForNew({
-  to: 'user@test.com',
-  timeout: 30000  // 30 seconds (default)
-});
-
-if (email) {
-  console.log('OTP:', email.detected_otp);
-}
 ```
 
 #### `inbox.get(emailId)`

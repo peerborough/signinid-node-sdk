@@ -7,7 +7,7 @@ export type {
   ListEmailsParams,
   InboxEmail,
   SentEmail,
-  ListResponse,
+  ListIdsResponse,
   Pagination,
   SpamRule,
   SpamRules,

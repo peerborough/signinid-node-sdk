@@ -2,6 +2,8 @@
 
 Node.js SDK for the SigninID sandbox email testing API. Capture and inspect test emails with automatic OTP detection.
 
+[Homepage](https://app.signinid.com) | [Documentation](https://app.signinid.com/docs)
+
 ## Installation
 
 ```bash

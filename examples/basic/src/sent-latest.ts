@@ -10,7 +10,11 @@
  *   npm run sent:latest
  */
 
+import dotenv from "dotenv";
 import { SigninID } from "signinid";
+
+dotenv.config({ path: ".env", quiet: true });
+dotenv.config({ path: ".env.local", override: true, quiet: true });
 
 async function main() {
   const client = new SigninID();

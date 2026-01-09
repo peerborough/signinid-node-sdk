@@ -9,7 +9,11 @@
  *   npm run inbox:latest
  */
 
+import dotenv from "dotenv";
 import { SigninID } from "signinid";
+
+dotenv.config({ path: ".env", quiet: true });
+dotenv.config({ path: ".env.local", override: true, quiet: true });
 
 async function main() {
   // Create client (reads SIGNINID_SECRET_KEY from environment)

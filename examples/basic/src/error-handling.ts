@@ -9,15 +9,15 @@
  *   npm run error
  */
 
+import dotenv from "dotenv";
 import {
   SigninID,
   SigninIDError,
   AuthenticationError,
-  ValidationError,
-  NetworkError,
-  TimeoutError,
-  RateLimitError,
 } from "signinid";
+
+dotenv.config({ path: ".env", quiet: true });
+dotenv.config({ path: ".env.local", override: true, quiet: true });
 
 async function demonstrateAuthError() {
   console.log("=== Authentication Error ===");

@@ -12,6 +12,7 @@
     "error": "node dist/error-handling.js"
   },
   "dependencies": {
+    "dotenv": "^17.2.3",
     "signinid": "file:../.."
   },
   "devDependencies": {

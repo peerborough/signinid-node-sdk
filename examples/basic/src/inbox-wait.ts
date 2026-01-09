@@ -6,17 +6,30 @@
  *
  * Usage:
  *   npm run build
- *   npm run inbox:wait
+ *   npm run inbox:wait <email>
+ *
+ * Example:
+ *   npm run inbox:wait test@your-server.signinid.com
  */
 
+import dotenv from "dotenv";
 import { SigninID } from "signinid";
 
-async function main() {
-  const client = new SigninID();
+dotenv.config({ path: ".env", quiet: true });
+dotenv.config({ path: ".env.local", override: true, quiet: true });
 
-  // The recipient email to filter by
-  // Replace with your test email address
-  const testEmail = process.argv[2] || "test@your-server.signinid.com";
+async function main() {
+  const testEmail = process.argv[2];
+
+  if (!testEmail) {
+    console.error("Error: Email address is required.");
+    console.error("");
+    console.error("Usage: npm run inbox:wait <email>");
+    console.error("Example: npm run inbox:wait test@your-server.signinid.com");
+    process.exit(1);
+  }
+
+  const client = new SigninID();
 
   console.log(`Waiting for new email to: ${testEmail}`);
   console.log("Timeout: 30 seconds");

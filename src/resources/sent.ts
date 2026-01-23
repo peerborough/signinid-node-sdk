@@ -32,7 +32,7 @@ export class SentResource {
    */
   async latest(params?: LatestEmailParams): Promise<SentEmail | null> {
     return this.client.request<SentEmail | null>(
-      "/api/v1/sent/latest",
+      "/v1/sent/latest",
       params ? { to: params.to } : undefined
     );
   }
@@ -52,7 +52,7 @@ export class SentResource {
    */
   async get(emailId: string): Promise<SentEmail> {
     return this.client.request<SentEmail>(
-      `/api/v1/sent/${encodeURIComponent(emailId)}`
+      `/v1/sent/${encodeURIComponent(emailId)}`
     );
   }
 
@@ -83,7 +83,7 @@ export class SentResource {
    */
   async list(params?: ListEmailsParams): Promise<ListIdsResponse> {
     return this.client.request<ListIdsResponse>(
-      "/api/v1/sent",
+      "/v1/sent",
       this.serializeParams(params)
     );
   }

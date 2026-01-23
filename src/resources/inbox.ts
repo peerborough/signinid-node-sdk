@@ -33,7 +33,7 @@ export class InboxResource {
    */
   async latest(params?: LatestEmailParams): Promise<InboxEmail | null> {
     if (!params) {
-      return this.client.request<InboxEmail | null>("/api/v1/inbox/latest");
+      return this.client.request<InboxEmail | null>("/v1/inbox/latest");
     }
 
     const queryParams: Record<string, string> = {};
@@ -48,7 +48,7 @@ export class InboxResource {
     }
 
     return this.client.request<InboxEmail | null>(
-      "/api/v1/inbox/latest",
+      "/v1/inbox/latest",
       Object.keys(queryParams).length > 0 ? queryParams : undefined
     );
   }
@@ -118,7 +118,7 @@ export class InboxResource {
    */
   async get(emailId: string): Promise<InboxEmail> {
     return this.client.request<InboxEmail>(
-      `/api/v1/inbox/${encodeURIComponent(emailId)}`
+      `/v1/inbox/${encodeURIComponent(emailId)}`
     );
   }
 
@@ -149,7 +149,7 @@ export class InboxResource {
    */
   async list(params?: ListEmailsParams): Promise<ListIdsResponse> {
     return this.client.request<ListIdsResponse>(
-      "/api/v1/inbox",
+      "/v1/inbox",
       this.serializeParams(params)
     );
   }

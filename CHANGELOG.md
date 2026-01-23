@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2025-01-23
+
+### Changed
+
+- **Breaking**: Migrate API paths from `/api/v1` to `/v1`
+
+### Added
+
+- Add dotenv support to examples for easier local development
+- Add homepage, bugs, and repository metadata to package.json
+
 ## [0.2.1] - 2025-01-07
 
 ### Initial Release
